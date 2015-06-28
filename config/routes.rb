@@ -1,0 +1,18 @@
+# config/routes.rb
+Rails.application.routes.draw do
+  devise_for :users, :controllers => { :comfirmations => "comfirmations" }
+  scope :api do
+    scope :v1 do
+      resources :products, except: [:new, :edit]
+      resources :reviews, except: [:new, :edit]
+      resources :recommendations, except: [:new, :edit]
+      resources :notes, except: [:new, :edit]
+    end
+  end
+
+  namespace :api do
+    scope :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth'
+    end
+  end
+end
