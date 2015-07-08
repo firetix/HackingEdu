@@ -11,6 +11,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'devise_token_auth'
 gem 'awesome_print'
 gem 'kaminari'
+gem 'fog'
 gem 'textacular', '~> 3.0'
 group :development, :test do
   gem 'faker'

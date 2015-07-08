@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :notes, except: [:new, :edit]
     end
   end
+  get '/s3/sign' => 's3#sign', :as => 's3_sign'
 
   namespace :api do
     scope :v1 do
