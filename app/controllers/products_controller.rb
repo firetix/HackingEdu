@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
   def index
     logger.ap params
     if params.has_key? 'search_term' and params[:search_term] and !params[:search_term].blank?
-      @products = Product.where.not(thc_dose: nil).basic_search(params[:search_term]).page(params[:page]).per(params[:per_page])
+      @products = Product.where.not(thc_dose: nil,verified: false).basic_search(params[:search_term]).page(params[:page]).per(params[:per_page])
     else
-      @products = Product.where.not(thc_dose: nil).page(params[:page]).per(params[:per_page])
+      @products = Product.where.not(thc_dose: nil,verified: false).page(params[:page]).per(params[:per_page])
     end
     logger.ap @products.length
     render json: @products
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params)
+    @product = Product.new(product_params)
 
     if @product.save
       render json: @product, status: :created, location: @product
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
-    if @product.update(params)
+    if @product.update(product_params)
       head :no_content
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -59,6 +59,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name)
+    params.require(:product).permit(:product_name,:manufacturer,:type_strain,:thc,:file_name_2,:creator,:creatorId)
   end
+
 end

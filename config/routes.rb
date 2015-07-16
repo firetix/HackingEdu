@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get '/s3/sign' => 's3#sign', :as => 's3_sign'
+  get '/s3/sign_image' => 's3#sign_image', :as => 's3_sign_image'
 
   namespace :api do
     scope :v1 do
