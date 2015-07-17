@@ -53,6 +53,6 @@ class RecommendationsController < ApplicationController
   end
 
   def recommendation_params
-    params.require(:recommendation).permit(:alcohol,:sport,:eaten,:checkin_start,:recomendation,:high_level)
+    params.require(:recommendation).permit(:alcohol,:user_id,:sport,:eaten,:checkin_start,:recomendation,:high_level)
   end
 end
