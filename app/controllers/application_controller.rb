@@ -16,6 +16,7 @@ class ApplicationController < ActionController::API
     devise_parameter_sanitizer.for(:account_update) << :weight
     devise_parameter_sanitizer.for(:account_update) << :gender
     devise_parameter_sanitizer.for(:account_update) << :experience_level
+    devise_parameter_sanitizer.for(:account_update) << :wish_list
   end
   ##
   # Authentication Failure
