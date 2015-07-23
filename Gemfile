@@ -13,7 +13,7 @@ gem 'awesome_print'
 gem 'kaminari'
 gem 'fog'
 gem 'le'
-gem 'honeybadger'
+gem 'honeybadger', '~> 2.0'
 gem 'textacular', '~> 3.0'
 group :development, :test do
   gem 'faker'
