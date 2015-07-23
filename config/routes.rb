@@ -1,6 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :comfirmations => "comfirmations" }
+  devise_for :users, :controllers => { :confirmations => "confirmations",:sessions => 'sessions' }
   scope :api do
     scope :v1 do
       resources :products, except: [:new, :edit]
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :notes, except: [:new, :edit]
     end
   end
+  get '/wish_list' => 'users#get_wish_list', :as => 'get_wish_list'
   get '/s3/sign' => 's3#sign', :as => 's3_sign'
   get '/s3/sign_image' => 's3#sign_image', :as => 's3_sign_image'
 

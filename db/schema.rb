@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 20150628075523) do
     t.string   "nutritions_extra"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "file_name"
+    t.boolean  "verified",         default: false
+    t.text     "file_name_2"
+    t.text     "creator"
+    t.integer  "creatorId"
+    t.text     "extract_type"
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -58,6 +64,9 @@ ActiveRecord::Schema.define(version: 20150628075523) do
     t.string   "checkin_start"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.text     "recomendation"
+    t.text     "high_level"
+    t.integer  "user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -101,6 +110,8 @@ ActiveRecord::Schema.define(version: 20150628075523) do
     t.text     "gender"
     t.text     "height"
     t.text     "experience_level"
+    t.integer  "wish_list",                                        array: true
+    t.json     "up_voted"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

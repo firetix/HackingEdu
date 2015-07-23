@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    logger.ap params
     if params.has_key? 'search_term' and params[:search_term] and !params[:search_term].blank?
       @products = Product.where.not(thc_dose: nil,verified: false).basic_search(params[:search_term]).page(params[:page]).per(params[:per_page])
     else
@@ -26,6 +25,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      ApplicationMailer.product_added(@product).deliver
       render json: @product, status: :created, location: @product
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_name,:manufacturer,:type_strain,:thc,:file_name_2,:creator,:creatorId)
+    params.require(:product).permit(:product_name,:manufacturer,:type_strain,:thc,:file_name_2,:creator,:creatorId,:extract_type)
   end
 
 end
