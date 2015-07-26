@@ -19,6 +19,7 @@ class ApplicationController < ActionController::API
     devise_parameter_sanitizer.for(:account_update) << :birthdate
     devise_parameter_sanitizer.for(:account_update) << {wish_list:[]}
     devise_parameter_sanitizer.for(:account_update) << :wish_list
+    devise_parameter_sanitizer.for(:account_update) << :photo_url
 
     # devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:experience_level, :gender, :weight, :height,:birthdate)}
 

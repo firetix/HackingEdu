@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20150726021957) do
     t.text     "experience_level"
     t.integer  "wish_list",                                        array: true
     t.json     "up_voted"
+    t.text     "photo_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
