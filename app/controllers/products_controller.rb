@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params.has_key? 'search_term' and params[:search_term] and !params[:search_term].blank?
-      @products = Product.where.not(thc_dose: nil,verified: false).basic_search(params[:search_term]).page(params[:page]).per(params[:per_page])
+      @products = Product.where.not(thc_dose: nil,verified: false).fuzzy_search({product_name: params[:search_term],manufacturer: params[:search_term],flavor: params[:search_term],category: params[:search_term]},nil).page(params[:page]).per(params[:per_page])
     else
       @products = Product.where.not(thc_dose: nil,verified: false).page(params[:page]).per(params[:per_page])
     end

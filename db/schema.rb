@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628075523) do
+ActiveRecord::Schema.define(version: 20150726021957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "notes", force: :cascade do |t|
     t.string   "note"
@@ -25,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150628075523) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer  "spreedsheat_id"
+    t.integer  "spreadsheet_id"
     t.string   "have_photo"
     t.string   "manufacturer"
     t.string   "product_name"
@@ -46,15 +47,58 @@ ActiveRecord::Schema.define(version: 20150628075523) do
     t.string   "ingredients"
     t.string   "dairy"
     t.text     "nuts"
-    t.string   "nutritions_extra"
+    t.string   "nutritional_notes"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "file_name"
-    t.boolean  "verified",         default: false
+    t.boolean  "verified",          default: false
     t.text     "file_name_2"
     t.text     "creator"
     t.integer  "creatorId"
     t.text     "extract_type"
+    t.text     "flavor_backend"
+    t.text     "cbd_total"
+    t.text     "cbd_uom"
+    t.text     "nut_info"
+    t.text     "add_file_name"
+  end
+
+  create_table "products3", force: :cascade do |t|
+    t.text     "spreedsheat_id"
+    t.string   "have_photo"
+    t.string   "manufacturer"
+    t.string   "product_name"
+    t.string   "product_name_2"
+    t.string   "flavor"
+    t.string   "flavor_backend"
+    t.string   "category"
+    t.string   "quantity"
+    t.string   "thc_dose"
+    t.string   "cbd_dose"
+    t.string   "nb_dose"
+    t.string   "thc"
+    t.string   "dry_weed"
+    t.string   "cbd_total"
+    t.string   "thc_3_party"
+    t.string   "type_strain"
+    t.text     "dispenary_name"
+    t.string   "unit_of_mesure"
+    t.string   "thc_uom"
+    t.string   "cbd_uom"
+    t.string   "nutritional_notes"
+    t.string   "ingredients"
+    t.string   "dairy"
+    t.text     "nuts"
+    t.text     "nut_info"
+    t.text     "extract_type"
+    t.text     "file_name"
+    t.text     "add_file_name"
+    t.text     "file_name_2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "verified",          default: false
+    t.text     "creator"
+    t.integer  "creatorId"
   end
 
   create_table "recommendations", force: :cascade do |t|
