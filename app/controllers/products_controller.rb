@@ -9,8 +9,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.where.not(thc_dose: nil,verified: false).page(params[:page]).per(params[:per_page])
     end
-    logger.ap @products.length
-    render json: @products
+    render :json => { :data => @products, :page => params[:page], :per_page => params[:per_page]}
   end
 
   # GET /products/1

@@ -10,9 +10,6 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
 
-  def confirmation_required?
-    !confirmed?
-  end
 
 
   validates :email, presence: true
