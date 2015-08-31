@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get '/wish_list' => 'users#get_wish_list', :as => 'get_wish_list'
+  get '/brands_sub' => 'users#get_brands_sub_list', :as => 'get_brands_sub_list'
   get '/s3/sign' => 's3#sign', :as => 's3_sign'
   get '/s3/sign_image' => 's3#sign_image', :as => 's3_sign_image'
 

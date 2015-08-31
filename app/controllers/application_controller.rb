@@ -12,6 +12,7 @@ class ApplicationController < ActionController::API
     devise_parameter_sanitizer.for(:sign_up) << :uid
     devise_parameter_sanitizer.for(:sign_up) << :full_name
     devise_parameter_sanitizer.for(:sign_up) << :wish_list
+    devise_parameter_sanitizer.for(:sign_up) << :brands
     devise_parameter_sanitizer.for(:account_update) << :experience_level
     devise_parameter_sanitizer.for(:account_update) << :gender
     devise_parameter_sanitizer.for(:account_update) << :weight
@@ -19,6 +20,8 @@ class ApplicationController < ActionController::API
     devise_parameter_sanitizer.for(:account_update) << :birthdate
     devise_parameter_sanitizer.for(:account_update) << {wish_list:[]}
     devise_parameter_sanitizer.for(:account_update) << :wish_list
+    devise_parameter_sanitizer.for(:account_update) << {brands:[]}
+    devise_parameter_sanitizer.for(:account_update) << :brands
     devise_parameter_sanitizer.for(:account_update) << :photo_url
 
     # devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:experience_level, :gender, :weight, :height,:birthdate)}
