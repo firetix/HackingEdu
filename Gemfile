@@ -15,6 +15,7 @@ gem 'fog'
 gem 'le'
 gem 'honeybadger', '~> 2.0'
 gem 'textacular', '~> 3.0'
+gem 'twilio-ruby'
 group :development, :test do
   gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

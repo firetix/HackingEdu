@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     if params.has_key? 'search_term' and params[:search_term] and !params[:search_term].blank?
       @products = Product.where.not(thc_dose: nil,verified: false).fuzzy_search({product_name: params[:search_term],manufacturer: params[:search_term],flavor: params[:search_term],category: params[:search_term]},nil).page(params[:page]).per(params[:per_page])
     else
-      @products = Product.where.not(thc_dose: nil,verified: false,file_name: nil,file_name: '').order("RANDOM()").page(params[:page]).per(params[:per_page])
+      @products = Product.where.not(thc_dose: nil,verified: false,file_name: nil).order("RANDOM()").page(params[:page]).per(params[:per_page])
     end
     render :json => { :data => @products, :page => params[:page], :per_page => params[:per_page]}
   end
